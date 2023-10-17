@@ -12,6 +12,8 @@ public class CharacterMovement : MonoBehaviour
     public bool facingRight;
     // Variable para coger el objeto rigidbody.
     private Rigidbody rigidbody;
+    //Variable para manejar animaciones.
+    private Animator anim;
 
 
     void Start()
@@ -22,6 +24,8 @@ public class CharacterMovement : MonoBehaviour
         facingRight = true;
         //Coger el rigidbody.
         rigidbody = GetComponent<Rigidbody>();
+        //Cargamos el anim con el componente Animator.
+        anim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -45,6 +49,7 @@ public class CharacterMovement : MonoBehaviour
         {
             Flip();
         }
+        anim.SetFloat("Speed", Mathf.Abs(0.5f));
     }
     void Flip()
     {
