@@ -70,7 +70,7 @@ public class CharacterMovement : MonoBehaviour
         //Cargamos el área de la base que va a tocar el collider del suelo.
         grounded = Physics2D.OverlapCircle(groundCheck.position, groundRadius, whatIsGround);
         //Preguntamos por el valor de horizontal para aplicar el giro.
-        if (moveDirection>0.0f && !facingRight)
+        if (moveDirection > 0.0f && !facingRight)
         {
             Flip();
         }else if(moveDirection < 0.0f && facingRight)
