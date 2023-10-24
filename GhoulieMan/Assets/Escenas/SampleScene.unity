@@ -295,6 +295,37 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 698e1446281c28a44903301eee57baf1, type: 3}
   m_PrefabInstance: {fileID: 258790062}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &734225060
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 734225061}
+  m_Layer: 0
+  m_Name: KnifeSpawn
+  m_TagString: Untagged
+  m_Icon: {fileID: 3936346786652291628, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &734225061
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 734225060}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.15, y: 0.83, z: -0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 773634891}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &773634888
 GameObject:
   m_ObjectHideFlags: 0
@@ -360,6 +391,7 @@ Transform:
   - {fileID: 724722068}
   - {fileID: 1844241954}
   - {fileID: 2132752493}
+  - {fileID: 734225061}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -385,6 +417,9 @@ MonoBehaviour:
   whatIsGround:
     serializedVersion: 2
     m_Bits: 256
+  knifeSpeed: 0
+  knifeSpawn: {fileID: 0}
+  knifePrefab: {fileID: 8310756900956167970, guid: 0f7dd3f0f6c001c4eaebfedc68029ef8, type: 3}
 --- !u!95 &773634893
 Animator:
   serializedVersion: 5

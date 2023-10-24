@@ -25,6 +25,15 @@ public class CharacterMovement : MonoBehaviour
     //Variable para reconocimiento del objeto que tocamos.
     public LayerMask whatIsGround;
 
+    //Variable de velocidad del cuchillo.
+    public float knifeSpeed;
+    //Variable del transform de donde sale el cuchillo;
+    public Transform knifeSpawn;
+    //Variable para el prefab del cuchillo.
+    public Rigidbody knifePrefab;
+    //Variable de el cuchillo creado.
+    Rigidbody clone;
+
     void Start()
     {
         //Inicializamos la velocidad.
@@ -43,7 +52,10 @@ public class CharacterMovement : MonoBehaviour
         groundCheck = GameObject.Find("GroundCheck").transform;
         //Cargar el tamaño del radio del area de contacto con el collaider de la base.
         groundRadius = 0.2f;
-
+        //Cargamos la velocidad del cuchillo.
+        knifeSpeed = 600.0f;
+        //Cargamos el objeto vacío de donde sale el cuchillo.
+        knifeSpawn = GameObject.Find("KnifeSpawn").transform;
     }
 
     // Update is called once per frame
@@ -52,8 +64,7 @@ public class CharacterMovement : MonoBehaviour
         //Si presionamos la flecha derecha se mueva.
         moveDirection = Input.GetAxis("Horizontal");
         //Preguntamos por el botón de salto.
-        if (grounded && 
-            Input.GetButtonDown("Jump"))
+        if (grounded && Input.GetButtonDown("Jump"))
         {
             //Cargamos la animación de salto.
             anim.SetTrigger("IsJumping");
@@ -77,7 +88,13 @@ public class CharacterMovement : MonoBehaviour
         {
             Flip();
         }
-        anim.SetFloat("Speed", Mathf.Abs(0.5f));
+        anim.SetFloat("Speed", Mathf.Abs(moveDirection));
+        //Preguntamos si se ha presionado el botón izquierdo del ratón.
+        if (Input.GetButtonDown("Fire1"))
+        {
+            //Llamamos al método Attack para disparar.
+            Attack();
+        }
     }
     void Flip()
     {
@@ -85,5 +102,13 @@ public class CharacterMovement : MonoBehaviour
         facingRight = !facingRight;
         //Le damos el valor al vector para que rote 180 grados.
         transform.Rotate(Vector3.up, 180.0f, Space.World);
+    }
+    //Método de ataque creando el cuchillo y lanzándolo.
+    void Attack()
+    {
+        //Creamos el objeto clone asignándole un rigidbody del prefab.
+        clone = Instantiate(knifePrefab, knifeSpawn.position, knifeSpawn.rotation) as Rigidbody;
+        //Le damos movimiento a clone.
+        clone.AddForce(knifeSpawn.transform.right * knifeSpeed);
     }
 }
