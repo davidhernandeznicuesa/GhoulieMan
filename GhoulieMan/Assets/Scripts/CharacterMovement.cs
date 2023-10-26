@@ -106,6 +106,12 @@ public class CharacterMovement : MonoBehaviour
     //Método de ataque creando el cuchillo y lanzándolo.
     void Attack()
     {
+        //Cargar la animación de ataque.
+        anim.SetTrigger("attacking");
+        
+    }
+    public void CallFireProjectile()
+    {
         //Creamos el objeto clone asignándole un rigidbody del prefab.
         clone = Instantiate(knifePrefab, knifeSpawn.position, knifeSpawn.rotation) as Rigidbody;
         //Le damos movimiento a clone.
