@@ -20,9 +20,11 @@ public class Enemy01Move : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Vector3.Distance(player.position, this.transform.position) < 12)
+        //Preguntamos si la distancia está dentro del radio de acción del enemigo.
+        if(Vector3.Distance(player.position, this.transform.position) < 6)
         {
-            print("Player demasiado cerca.");
+            //Le decimos al enemigo que siga al player.
+            nav.SetDestination(player.position);
         }
     }
 }
