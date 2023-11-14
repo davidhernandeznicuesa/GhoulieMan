@@ -37,4 +37,15 @@ public class GameManager : MonoBehaviour
     {
         
     }
+    public void Playerhit (int currentHP)
+    {
+        if(currentHP > 0)
+        {
+            gameOver = false;
+        }
+        else
+        {
+            gameOver = true;
+        }
+    }
 }

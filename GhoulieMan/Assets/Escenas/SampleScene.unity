@@ -137,6 +137,7 @@ GameObject:
   - component: {fileID: 95373985}
   - component: {fileID: 95373984}
   - component: {fileID: 95373986}
+  - component: {fileID: 95373987}
   m_Layer: 0
   m_Name: Enemy01
   m_TagString: Untagged
@@ -246,6 +247,20 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &95373987
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 95373980}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d539db64ce562cf438896150ce190c27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  range: 3
+  timeBetweenAttacks: 1
 --- !u!1001 &258790062
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -963,6 +978,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2056409002392001375, guid: 4070ca25dccea9941bf10c3755176091, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 773634888}
     - target: {fileID: 5750631607333746354, guid: 4070ca25dccea9941bf10c3755176091, type: 3}
       propertyPath: m_RootOrder
       value: 6

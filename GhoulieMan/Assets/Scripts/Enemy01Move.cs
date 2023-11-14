@@ -25,6 +25,18 @@ public class Enemy01Move : MonoBehaviour
         {
             //Le decimos al enemigo que siga al player.
             nav.SetDestination(player.position);
+            //Activo la animación de pasear.
+            anim.SetBool("isWalking", true);
+            //Desactivo la de esperar.
+            anim.SetBool("isIdle", false);
         }
+        //else
+        //{
+        //    //Activo la animación de pasear.
+        //    anim.SetBool("isWalking", false);
+        //    //Desactivo la de esperar.
+        //    anim.SetBool("isIdle", true);
+        //}
+        
     }
 }
