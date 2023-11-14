@@ -37,7 +37,7 @@ public class GameManager : MonoBehaviour
     {
         
     }
-    public void Playerhit (int currentHP)
+    public void PlayerHit (int currentHP)
     {
         if(currentHP > 0)
         {

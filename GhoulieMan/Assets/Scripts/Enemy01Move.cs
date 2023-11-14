@@ -21,7 +21,7 @@ public class Enemy01Move : MonoBehaviour
     void Update()
     {
         //Preguntamos si la distancia está dentro del radio de acción del enemigo.
-        if(Vector3.Distance(player.position, this.transform.position) < 6)
+        if(Vector3.Distance(player.position, this.transform.position) < 12)
         {
             //Le decimos al enemigo que siga al player.
             nav.SetDestination(player.position);
@@ -30,13 +30,14 @@ public class Enemy01Move : MonoBehaviour
             //Desactivo la de esperar.
             anim.SetBool("isIdle", false);
         }
-        //else
-        //{
-        //    //Activo la animación de pasear.
-        //    anim.SetBool("isWalking", false);
-        //    //Desactivo la de esperar.
-        //    anim.SetBool("isIdle", true);
-        //}
-        
+        else
+        {
+            //Le decimos al enemigo que se quede donde está.
+            nav.SetDestination(this.transform.position);
+            //Activo la animación de pasear.
+            anim.SetBool("isWalking", false);
+            //Desactivo la de esperar.
+            anim.SetBool("isIdle", true);
+        }  
     }
 }

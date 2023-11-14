@@ -29,12 +29,14 @@ public class Enemy01Attack : MonoBehaviour
         if (Vector3.Distance(transform.position, player.transform.position)< range)
         {
             playerInRange = true;
+            
         }
         else
         {
             playerInRange = false;
         }
-        print("Player en rango" + playerInRange);
+        
+        
     }
 
     IEnumerator attack()
