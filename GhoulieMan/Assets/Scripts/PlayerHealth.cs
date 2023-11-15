@@ -14,6 +14,8 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField] private float timer = 0f;
     //Animación.
     private Animator anim;
+    //Para cargar la animación del player.
+    private CharacterMovement characterMovement;
     void Start()
     {
         anim = GetComponent<Animator>();
@@ -22,7 +24,9 @@ public class PlayerHealth : MonoBehaviour
     void Update()
     {
         //Captura del tiempo pasado.
-        timer += Time.deltaTime;    
+        timer += Time.deltaTime;
+        //Cargamos el movimiento dl player
+        characterMovement = GetComponent<CharacterMovement>();
     }
     //Cuando el jugador choca con un collider de la maza y el enemigo con el isTrigger activado.
     private void OnTriggerEnter(Collider other)
@@ -31,7 +35,7 @@ public class PlayerHealth : MonoBehaviour
         //Si ha pasado el tiempo de espera y estamos vivos.
         if (timer >= timeSinceLastHit && !GameManager.instance.GameOver)
         {
-            //Si nos golpea la maza.
+            //Si nos golpea la maza o nos pegamos con el enemigo.
             if(other.tag == "weapon")
             {
                 //Llamamos al método de golpeo
@@ -45,9 +49,25 @@ public class PlayerHealth : MonoBehaviour
     //Método para el control del daño.
     void takeHit()
     {
-        GameManager.instance.PlayerHit(currentHealth);
-        anim.Play("Hurt");
-        currentHealth -= 10;
+        //Si tiene vida
+        if (currentHealth > 0)
+        {
+            //Mandamos la vida que le queda.
+            GameManager.instance.PlayerHit(currentHealth);
+            //Animación de golpeado.
+            anim.Play("Hurt");
+            //Descontamos 10 puntos
+            currentHealth -= 10;
+        }
+        //Si ha llegado a cero
+        if(currentHealth <= 0)
+        {
+            //Mandamos la vida que le queda.
+            GameManager.instance.PlayerHit(currentHealth);
+            //Animación de muerte.
+            anim.SetTrigger("isDie");
+            //Desacivamos el movimiento del player.
+            characterMovement.enabled = false;
+        }
     }
-
 }
