@@ -6,6 +6,7 @@ TagManager:
   tags:
   - CameraTarget
   - weapon
+  - PlayerWeapon
   layers:
   - Default
   - TransparentFX
