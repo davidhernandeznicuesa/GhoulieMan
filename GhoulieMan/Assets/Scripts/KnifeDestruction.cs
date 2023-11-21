@@ -14,6 +14,16 @@ public class KnifeDestruction : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+    }
+    //Si el cuchillo choca.
+    private void OnTriggerEnter(Collider other)
+    {
+        //Preguntamos al collider si ha chocado con un objeto.
+        if (other.gameObject)
+        {
+            //Debug.Log("Choca");
+            //Destruyo el cuchillo.
+            Destroy(this.gameObject);
+        }
     }
 }

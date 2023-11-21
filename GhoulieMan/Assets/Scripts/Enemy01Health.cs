@@ -105,8 +105,7 @@ public class Enemy01Health : MonoBehaviour
     {
         //Desactivar el collider
         capsuleCollider.enabled = false;
-        //Desactivar el camino(navMesh).
-        nav.enabled = false;
+        
         //Activar la animación de morirse.
         anim.SetTrigger("EnemyDie");
         //Activar la función manual del rigidbody.
@@ -115,6 +114,8 @@ public class Enemy01Health : MonoBehaviour
         StartCoroutine(removeEnemy());
         //desactivamos el collider del arma
         weaponCollider.enabled = false;
+        //Desactivar el camino(navMesh).
+        nav.enabled = false;
     }
     //Tiempo que tarda en desaparecer el personaje.
     IEnumerator removeEnemy()
