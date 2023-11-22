@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerHealth : MonoBehaviour
 {
@@ -16,6 +17,8 @@ public class PlayerHealth : MonoBehaviour
     private Animator anim;
     //Para cargar la animación del player.
     private CharacterMovement characterMovement;
+    //Variable para manejar el Slider.
+    [SerializeField] Slider healthSlider;
     void Start()
     {
         anim = GetComponent<Animator>();
@@ -58,6 +61,8 @@ public class PlayerHealth : MonoBehaviour
             anim.Play("Hurt");
             //Descontamos 10 puntos
             currentHealth -= 10;
+            //Descontar en la barra.
+            healthSlider.value = currentHealth;
         }
         //Si ha llegado a cero
         if(currentHealth <= 0)

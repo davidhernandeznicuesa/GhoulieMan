@@ -46,24 +46,24 @@ public class Enemy01Move : MonoBehaviour
                 nav.enabled = false;
             }
         }
-        //else //Cuando tu te separas
+        ////else //Cuando tu te separas
+        ////{
+        ////    //Le decimos al enemigo que se quede donde está.
+        ////    nav.SetDestination(this.transform.position);
+        ////    //Activo la animación de pasear.
+        ////    anim.SetBool("isWalking", false);
+        ////    //Desactivo la de esperar.
+        ////    anim.SetBool("isIdle", true);
+        ////}
+        ////Cuando te mueres.
+        //if (GameManager.instance.GameOver)
         //{
         //    //Le decimos al enemigo que se quede donde está.
         //    nav.SetDestination(this.transform.position);
         //    //Activo la animación de pasear.
-        //    anim.SetBool("isWalking", false);
+        //    //anim.SetBool("isWalking", false);
         //    //Desactivo la de esperar.
-        //    anim.SetBool("isIdle", true);
+        //    //anim.SetBool("isIdle", true);
         //}
-        //Cuando te mueres.
-        if (GameManager.instance.GameOver)
-        {
-            //Le decimos al enemigo que se quede donde está.
-            nav.SetDestination(this.transform.position);
-            //Activo la animación de pasear.
-            anim.SetBool("isWalking", false);
-            //Desactivo la de esperar.
-            anim.SetBool("isIdle", true);
-        }
     }
 }
