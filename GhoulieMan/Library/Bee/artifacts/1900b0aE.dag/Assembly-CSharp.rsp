@@ -351,6 +351,7 @@
 "Assets/Scripts/Enemy01Move.cs"
 "Assets/Scripts/GameManager.cs"
 "Assets/Scripts/KnifeDestruction.cs"
+"Assets/Scripts/Pause.cs"
 "Assets/Scripts/PlayerHealth.cs"
 "Assets/Scripts/SmoothFollow.cs"
 -langversion:9.0

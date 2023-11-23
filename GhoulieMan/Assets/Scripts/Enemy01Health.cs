@@ -35,14 +35,20 @@ public class Enemy01Health : MonoBehaviour
     private bool dissapearEnemy;
     //BoxCollider del arma
     private BoxCollider weaponCollider;
-
+    //Variable para que emita sonido al ser herido.
+    private AudioSource audio;
+    //Para reproducir el audio .
+    [SerializeField]
+    private AudioClip hurtAudio;
+    //Para reproducir el audio .
+    [SerializeField]
+    private AudioClip dieAudio;
     //Hacemos una propiedad de si está vivo.
     public bool IsAlive
     {
         //Devolvemos si está vivo o muerto.
         get { return isAlive; }
     }
-
     void Start()
     {
         //Cogemos el boxCollider Hijo
@@ -55,6 +61,7 @@ public class Enemy01Health : MonoBehaviour
         isAlive = true;
         currentHealth = startingHealth;
         dissapearEnemy = false;
+        audio = GetComponent<AudioSource>();
     }
     void Update()
     {
@@ -89,6 +96,8 @@ public class Enemy01Health : MonoBehaviour
         //Si tiene puntos.
         if(currentHealth > 0)
         {
+            //Emite el sonido de herido.
+            audio.PlayOneShot(hurtAudio);
             anim.Play("Hurt");
             currentHealth -= 10;
         }
@@ -105,7 +114,8 @@ public class Enemy01Health : MonoBehaviour
     {
         //Desactivar el collider
         capsuleCollider.enabled = false;
-        
+        //Emite el sonido de muerte.
+        audio.PlayOneShot(dieAudio);
         //Activar la animación de morirse.
         anim.SetTrigger("EnemyDie");
         //Activar la función manual del rigidbody.

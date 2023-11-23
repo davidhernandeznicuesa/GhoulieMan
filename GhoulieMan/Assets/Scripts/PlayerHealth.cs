@@ -19,10 +19,19 @@ public class PlayerHealth : MonoBehaviour
     private CharacterMovement characterMovement;
     //Variable para manejar el Slider.
     [SerializeField] Slider healthSlider;
+    //Variable para que emita sonido el player cuando lo hieren.
+    private AudioSource audio;
+    //Para reproducir el audio herido.
+    [SerializeField]
+    private AudioClip hurtAudio;
+    //Para reproducir el audio muerto.
+    [SerializeField]
+    private AudioClip dieAudio;
     void Start()
     {
         anim = GetComponent<Animator>();
         currentHealth = startingHealth;
+        audio = GetComponent<AudioSource>();
     }
     void Update()
     {
@@ -63,16 +72,21 @@ public class PlayerHealth : MonoBehaviour
             currentHealth -= 10;
             //Descontar en la barra.
             healthSlider.value = currentHealth;
+            //Emite el sonido herido.
+            audio.PlayOneShot(hurtAudio);
         }
         //Si ha llegado a cero
         if(currentHealth <= 0)
         {
             //Mandamos la vida que le queda.
             GameManager.instance.PlayerHit(currentHealth);
+            //Emite el sonido muerto.
+            audio.PlayOneShot(dieAudio);
             //Animación de muerte.
             anim.SetTrigger("isDie");
             //Desacivamos el movimiento del player.
             characterMovement.enabled = false;
+            
         }
     }
 }
