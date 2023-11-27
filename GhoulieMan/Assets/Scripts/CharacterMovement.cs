@@ -52,7 +52,7 @@ public class CharacterMovement : MonoBehaviour
         //Cargamos el anim con el componente Animator.
         anim = GetComponent<Animator>();
         //Inicializo la variable de salto.
-        jumpSpeed = 600.0f;
+        jumpSpeed = 800.0f;
         //Inicializamos la variable de tocar el suelo.
         grounded = false;
         //Cargar el transform.
