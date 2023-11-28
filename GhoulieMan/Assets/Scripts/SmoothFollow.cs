@@ -17,10 +17,19 @@ public class SmoothFollow : MonoBehaviour
 
     public Transform cameraTarget;
 
+    //Variables camara del Boss
+    public Transform bossCameraTarget;
+    public bool bossCameraActive = false;
+    public float cameraSpeed = 30.0f;
+
+
     //Método de carga anterior al Start.
     private void Awake()
     {
+        //Cargamos la cámara del player
         cameraTarget = GameObject.FindGameObjectWithTag("CameraTarget").transform;
+        //Cargamos la cámara del Boss.
+        bossCameraTarget = GameObject.FindGameObjectWithTag("BossCameraTarget").transform;
     }
     //Métodos que comprueban que estamos dentro de la pantalla.
     bool CheckXMargin()
