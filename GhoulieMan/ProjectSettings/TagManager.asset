@@ -7,6 +7,9 @@ TagManager:
   - CameraTarget
   - weapon
   - PlayerWeapon
+  - Boss
+  - BossCheckPoint
+  - BossCameraTarget
   layers:
   - Default
   - TransparentFX
